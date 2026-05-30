@@ -16,6 +16,7 @@ The stack should be simple, TypeScript-first, and friendly for course exercises.
 | Data Storage | In-memory data first | Supports very small learning steps before persistence is introduced. |
 | Future Persistence | SQLite | Simple local database when the demo needs durable agents, ailments, therapies, and appointments. |
 | Build Tooling | TypeScript compiler | The current project already builds with `tsc`. Add more tooling only when needed. |
+| Test Runner | Vitest | Gives the project fast TypeScript-friendly tests for validating specs without adding heavy tooling. |
 
 ## Application Structure
 
@@ -38,6 +39,7 @@ Do not create folders before they have a clear purpose. The project should evolv
 - Prefer readable server-side TypeScript over clever abstractions.
 - Keep feature code close to the route or view until repetition proves a helper is useful.
 - Use static demo data before adding database complexity.
+- Use Vitest for focused validation tests as behavior becomes large enough to need repeatable checks.
 - Add SQLite only after the core domain is visible in the UI.
 
 ## Deferred Choices
