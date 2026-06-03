@@ -1,6 +1,11 @@
-# Spec-Driven Development Course
+# Spec-Driven Development with Agentic Coding Assistants
 
 This repository contains the companion code for the DeepLearning.AI Spec-Driven Development course. Each video folder holds the complete project state you need to follow along with that video.
+
+## Other DeepLearning.AI Resources
+> :mortar_board: **Keep learning** → [Explore all DeepLearning.AI courses](https://www.deeplearning.ai/courses/) — taught by the people building the future of AI. Find your next one.
+>
+> :computer: **Explore more course artifacts** → [Browse the DeepLearning.AI course artifacts repo](https://github.com/https-deeplearning-ai/deeplearning-ai) to find notebooks, projects, and notes from other courses across the DeepLearning.AI library.
 
 ## How to use this repo
 
