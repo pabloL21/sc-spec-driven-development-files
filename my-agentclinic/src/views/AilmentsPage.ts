@@ -16,17 +16,19 @@ export const AilmentsPage = ({ ailments }: AilmentsPageProps) => html`<main clas
     <p>Common conditions that can make an otherwise helpful agent need a reset.</p>
   </header>
 
-  <div class="entity-grid">
+  <ul class="entity-grid">
     ${ailments.map(
-      (ailment) => html`<article>
-        <header>
-          <h2><a href="/ailments/${ailment.id}">${ailment.name}</a></h2>
-          <p><span class="tag">${ailment.severity}</span></p>
-        </header>
-        <p>${ailment.description}</p>
-      </article>`,
+      (ailment) => html`<li>
+        <article>
+          <header>
+            <h2><a href="/ailments/${ailment.id}">${ailment.name}</a></h2>
+            <p><span class="tag tag-${ailment.severity.toLowerCase()}">${ailment.severity}</span></p>
+          </header>
+          <p>${ailment.description}</p>
+        </article>
+      </li>`,
     )}
-  </div>
+  </ul>
 </main>`
 
 export const AilmentDetailPage = ({ ailment }: AilmentDetailPageProps) => html`<main class="site-main">
@@ -39,7 +41,7 @@ export const AilmentDetailPage = ({ ailment }: AilmentDetailPageProps) => html`<
     <header>
       <p class="eyebrow">Ailment chart</p>
       <h1>${ailment.name}</h1>
-      <p><span class="tag">${ailment.severity}</span></p>
+      <p><span class="tag tag-${ailment.severity.toLowerCase()}">${ailment.severity}</span></p>
     </header>
     <p>${ailment.description}</p>
 

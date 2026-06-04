@@ -32,6 +32,7 @@ describe('Clinic dashboard layout', () => {
   it('renders the AgentClinic home page with shared navigation', () => {
     expect(page).toContain('<title>AgentClinic</title>')
     expect(page).toContain('<h1>AgentClinic</h1>')
+    expect(page).toContain('Home')
     expect(page).toContain('Agents')
     expect(page).toContain('Ailments')
     expect(page).toContain('Therapies')
@@ -49,6 +50,8 @@ describe('SQLite-backed dashboard pages', () => {
     const response = await getText('/agents')
 
     expect(response.status).toBe(200)
+    expect(response.text).toContain('<title>Agents | AgentClinic</title>')
+    expect(response.text).toContain('aria-current="page"')
     expect(response.text).toContain('Ava Triage')
     expect(response.text).toContain('GPT-4.1 Careflow')
     expect(response.text).toContain('Nora from Product')
@@ -78,6 +81,9 @@ describe('SQLite-backed dashboard pages', () => {
     expect(response.status).toBe(200)
     expect(response.text).toContain('Context Compression Nap')
     expect(response.text).toContain('Prompt Realignment Session')
+    expect(response.text).toContain('Matching ailments:')
+    expect(response.text).toContain('Context Window Fatigue')
+    expect(response.text).toContain('Prompt Drift')
   })
 
   it('renders a therapy detail page with matching ailments', async () => {

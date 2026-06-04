@@ -23,6 +23,10 @@ export type TherapySummary = {
   details: string
 }
 
+export type TherapyListItem = TherapySummary & {
+  ailments: AilmentSummary[]
+}
+
 export type AgentDetail = AgentSummary & {
   ailments: AilmentSummary[]
 }
@@ -39,6 +43,9 @@ export type TherapyDetail = TherapySummary & {
 type AgentRow = AgentSummary
 type AilmentRow = AilmentSummary
 type TherapyRow = TherapySummary
+type TherapyAilmentRow = AilmentSummary & {
+  therapy_id: string
+}
 
 export type ClinicRepository = ReturnType<typeof createClinicRepository>
 
@@ -67,14 +74,34 @@ export const createClinicRepository = (database: ClinicDatabase) => {
       )
       .all() as AilmentRow[]
 
-  const listTherapies = () =>
-    database
+  const listTherapies = () => {
+    const therapies = database
       .prepare(
         `SELECT id, name, purpose, details
          FROM therapies
          ORDER BY name`,
       )
       .all() as TherapyRow[]
+
+    const therapyAilments = database
+      .prepare(
+        `SELECT
+           therapy_ailments.therapy_id,
+           ailments.id,
+           ailments.name,
+           ailments.severity,
+           ailments.description
+         FROM ailments
+         INNER JOIN therapy_ailments ON therapy_ailments.ailment_id = ailments.id
+         ORDER BY ailments.name`,
+      )
+      .all() as TherapyAilmentRow[]
+
+    return therapies.map((therapy) => ({
+      ...therapy,
+      ailments: therapyAilments.filter((ailment) => ailment.therapy_id === therapy.id),
+    }))
+  }
 
   const getAgent = (id: string) => {
     const agent = database

@@ -16,27 +16,29 @@ export const AgentsPage = ({ agents }: AgentsPageProps) => html`<main class="sit
     <p>Persisted demo patients waiting for a little operational care.</p>
   </header>
 
-  <div class="entity-grid">
+  <ul class="entity-grid">
     ${agents.map(
-      (agent) => html`<article>
-        <header>
-          <h2><a href="/agents/${agent.id}">${agent.name}</a></h2>
-          <p>${agent.model}</p>
-        </header>
-        <dl class="facts">
-          <div>
-            <dt>Status</dt>
-            <dd>${agent.status}</dd>
-          </div>
-          <div>
-            <dt>Owner</dt>
-            <dd>${agent.owner}</dd>
-          </div>
-        </dl>
-        <p>${agent.summary}</p>
-      </article>`,
+      (agent) => html`<li>
+        <article>
+          <header>
+            <h2><a href="/agents/${agent.id}">${agent.name}</a></h2>
+            <p>${agent.model}</p>
+          </header>
+          <dl class="facts">
+            <div>
+              <dt>Status</dt>
+              <dd>${agent.status}</dd>
+            </div>
+            <div>
+              <dt>Owner</dt>
+              <dd>${agent.owner}</dd>
+            </div>
+          </dl>
+          <p>${agent.summary}</p>
+        </article>
+      </li>`,
     )}
-  </div>
+  </ul>
 </main>`
 
 export const AgentDetailPage = ({ agent }: AgentDetailPageProps) => html`<main class="site-main">
@@ -74,7 +76,7 @@ export const AgentDetailPage = ({ agent }: AgentDetailPageProps) => html`<main c
             ${agent.ailments.map(
               (ailment) => html`<li>
                 <a href="/ailments/${ailment.id}">${ailment.name}</a>
-                <span class="tag">${ailment.severity}</span>
+                <span class="tag tag-${ailment.severity.toLowerCase()}">${ailment.severity}</span>
               </li>`,
             )}
           </ul>`

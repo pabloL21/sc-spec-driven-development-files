@@ -24,6 +24,19 @@ body {
   gap: 1rem;
 }
 
+.site-header nav ul:last-child {
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+}
+
+.site-header a.active,
+.site-header a[aria-current="page"] {
+  color: var(--agentclinic-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
 .site-name {
   color: var(--agentclinic-accent);
   text-decoration: none;
@@ -73,6 +86,17 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.entity-grid > li,
+.entity-grid article {
+  min-width: 0;
+}
+
+.entity-grid article {
+  height: 100%;
 }
 
 .facts {
@@ -100,12 +124,29 @@ body {
 
 .tag {
   display: inline-block;
+  margin: 0.125rem;
   padding: 0.15rem 0.5rem;
   border: 1px solid var(--pico-muted-border-color);
   border-radius: 999px;
   color: var(--agentclinic-accent);
   font-size: 0.8rem;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.tag-high {
+  border-color: #b42318;
+  color: #b42318;
+}
+
+.tag-medium {
+  border-color: #b54708;
+  color: #b54708;
+}
+
+.tag-low {
+  border-color: var(--agentclinic-accent);
+  color: var(--agentclinic-accent);
 }
 
 .breadcrumb {
@@ -128,5 +169,10 @@ body {
 
   .site-header nav {
     flex-direction: column;
+  }
+
+  .site-header nav ul:last-child {
+    display: flex;
+    flex-wrap: wrap;
   }
 }

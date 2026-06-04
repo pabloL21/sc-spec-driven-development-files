@@ -1,8 +1,8 @@
 import { html } from 'hono/html'
-import type { TherapyDetail, TherapySummary } from '../data/clinicRepository'
+import type { TherapyDetail, TherapyListItem } from '../data/clinicRepository'
 
 type TherapiesPageProps = {
-  therapies: TherapySummary[]
+  therapies: TherapyListItem[]
 }
 
 type TherapyDetailPageProps = {
@@ -16,17 +16,25 @@ export const TherapiesPage = ({ therapies }: TherapiesPageProps) => html`<main c
     <p>Small interventions for agents that need a better prompt, calmer context, or braver tools.</p>
   </header>
 
-  <div class="entity-grid">
+  <ul class="entity-grid">
     ${therapies.map(
-      (therapy) => html`<article>
-        <header>
-          <h2><a href="/therapies/${therapy.id}">${therapy.name}</a></h2>
-          <p>${therapy.purpose}</p>
-        </header>
-        <p>${therapy.details}</p>
-      </article>`,
+      (therapy) => html`<li>
+        <article>
+          <header>
+            <h2><a href="/therapies/${therapy.id}">${therapy.name}</a></h2>
+            <p>${therapy.purpose}</p>
+          </header>
+          <p>${therapy.details}</p>
+          <footer>
+            <strong>Matching ailments:</strong>
+            ${therapy.ailments.map(
+              (ailment) => html`<a href="/ailments/${ailment.id}" class="tag tag-${ailment.severity.toLowerCase()}">${ailment.name}</a>`,
+            )}
+          </footer>
+        </article>
+      </li>`,
     )}
-  </div>
+  </ul>
 </main>`
 
 export const TherapyDetailPage = ({ therapy }: TherapyDetailPageProps) => html`<main class="site-main">
@@ -50,7 +58,7 @@ export const TherapyDetailPage = ({ therapy }: TherapyDetailPageProps) => html`<
             ${therapy.ailments.map(
               (ailment) => html`<li>
                 <a href="/ailments/${ailment.id}">${ailment.name}</a>
-                <span class="tag">${ailment.severity}</span>
+                <span class="tag tag-${ailment.severity.toLowerCase()}">${ailment.severity}</span>
               </li>`,
             )}
           </ul>`

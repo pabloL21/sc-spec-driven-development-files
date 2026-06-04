@@ -29,6 +29,9 @@ CREATE TABLE IF NOT EXISTS agent_ailments (
   FOREIGN KEY (ailment_id) REFERENCES ailments (id)
 );
 
+CREATE INDEX IF NOT EXISTS idx_agent_ailments_ailment_id
+  ON agent_ailments (ailment_id);
+
 CREATE TABLE IF NOT EXISTS therapy_ailments (
   therapy_id TEXT NOT NULL,
   ailment_id TEXT NOT NULL,
@@ -36,6 +39,9 @@ CREATE TABLE IF NOT EXISTS therapy_ailments (
   FOREIGN KEY (therapy_id) REFERENCES therapies (id),
   FOREIGN KEY (ailment_id) REFERENCES ailments (id)
 );
+
+CREATE INDEX IF NOT EXISTS idx_therapy_ailments_ailment_id
+  ON therapy_ailments (ailment_id);
 
 CREATE TABLE IF NOT EXISTS appointments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

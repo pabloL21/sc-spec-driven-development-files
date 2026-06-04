@@ -1,9 +1,10 @@
 import { serve } from '@hono/node-server'
 import { createApp } from './app'
 import { createClinicRepository } from './data/clinicRepository'
-import { prepareDatabase } from './db/database'
+import { createDatabase, runMigrations } from './db/database'
 
-const database = prepareDatabase()
+const database = createDatabase()
+runMigrations(database)
 const app = createApp(createClinicRepository(database))
 const port = Number(process.env.PORT) || 3000
 

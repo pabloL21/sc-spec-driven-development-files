@@ -9,6 +9,9 @@
     "start": "node dist/index.js",
     "test": "vitest run src --pool=vmThreads"
   },
+  "engines": {
+    "node": ">=24"
+  },
   "dependencies": {
     "@hono/node-server": "^1.14.4",
     "hono": "^4.7.11"
