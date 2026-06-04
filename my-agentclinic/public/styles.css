@@ -1,59 +1,132 @@
+:root {
+  --agentclinic-accent: #247a68;
+  --agentclinic-surface: #f6fbf9;
+}
+
 body {
-  margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  color: #202124;
-  background: #f8fafc;
+  background:
+    linear-gradient(180deg, var(--agentclinic-surface), transparent 24rem),
+    var(--pico-background-color);
 }
 
 .site-header,
 .site-main,
 .site-footer {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
+  width: min(100% - 2rem, 68rem);
+  margin-inline: auto;
 }
 
 .site-header {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding-block: 1rem;
+}
+
+.site-header nav {
+  gap: 1rem;
 }
 
 .site-name {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
+  color: var(--agentclinic-accent);
+  text-decoration: none;
 }
 
 .site-main {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.site-main h1 {
-  margin: 0 0 0.75rem;
-  font-size: 2.5rem;
-  line-height: 1.1;
-}
-
-.site-main p,
-.site-footer p {
-  margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.6;
+  padding-block: 2rem 4rem;
 }
 
 .site-footer {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  color: #5f6368;
+  padding-block: 1rem 2rem;
+  color: var(--pico-muted-color);
 }
 
-.site-footer p {
-  font-size: 0.95rem;
+.hero {
+  max-width: 48rem;
+  padding-block: 2rem;
+}
+
+.hero h1,
+.page-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--agentclinic-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.page-header {
+  max-width: 44rem;
+  margin-bottom: 1.5rem;
+}
+
+.entity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+
+.facts div {
+  padding: 0.75rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+}
+
+.facts dt {
+  color: var(--pico-muted-color);
+  font-size: 0.8rem;
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 999px;
+  color: var(--agentclinic-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--pico-muted-color);
+}
+
+.breadcrumb span::before {
+  content: "/";
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .site-header nav,
+  .site-header nav ul {
+    align-items: flex-start;
+  }
+
+  .site-header nav {
+    flex-direction: column;
+  }
 }

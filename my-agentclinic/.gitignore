@@ -1,6 +1,8 @@
 /tmp
 /dist
 /out-tsc
+/data/*.sqlite
+/data/*.sqlite-*
 
 /node_modules
 npm-debug.log*

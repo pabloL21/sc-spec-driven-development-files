@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "db:setup": "npm run build && node dist/scripts/setupDatabase.js",
     "start": "node dist/index.js",
     "test": "vitest run src --pool=vmThreads"
   },
