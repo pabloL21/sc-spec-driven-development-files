@@ -9,23 +9,26 @@ Create the smallest running Hono server.
 - Show the product name and a short welcome message.
 - Verify the app opens in a browser.
 
-## Phase 2: Clinic Dashboard Foundation
+## Phase 2: Clinic Dashboard Foundation and Persistence
 
-Make the demo look like a small clinic dashboard with the first static domain pages.
+Make the demo look like a small clinic dashboard with the first persisted domain pages.
 
 - Add shared HTML layout helpers.
-- Add CSS for typography, spacing, and navigation.
+- Add PicoCSS for baseline typography, spacing, forms, and navigation.
 - Create links for Agents, Ailments, Therapies, and Appointments.
 - Keep all pages server-rendered.
-- Create a small static list of agents.
+- Add SQLite.
+- Create plain SQL migrations for agents, ailments, therapies, appointments, and relationship tables.
+- Seed the database with demo data.
+- Replace hard-coded reads with database queries.
+- Create a small persisted list of agents.
 - Show agent name, model, status, and owner.
 - Add an agent detail page.
-- Keep the data in code for now.
-- Create a static ailment list.
+- Create a persisted ailment list.
 - Include name, severity, and description.
 - Link ailments to affected agents when useful.
 - Make the page easy to scan during a demo.
-- Create a static therapy list.
+- Create a persisted therapy list.
 - Show therapy name, purpose, and matching ailments.
 - Add therapy details.
 - Keep therapy language playful but useful.
@@ -36,19 +39,10 @@ Let users book a simple appointment.
 
 - Add an appointment form.
 - Capture agent, ailment, date, and notes.
-- Show submitted appointments in memory.
+- Show submitted appointments from SQLite.
 - Validate required fields.
 
-## Phase 4: SQLite Persistence
-
-Move demo data into a local database.
-
-- Add SQLite.
-- Create tables for agents, ailments, therapies, and appointments.
-- Seed the database with demo data.
-- Replace in-memory reads with database queries.
-
-## Phase 5: Demo Polish
+## Phase 4: Demo Polish
 
 Make the app reliable and attractive for course demos.
 
@@ -57,7 +51,7 @@ Make the app reliable and attractive for course demos.
 - Check pages in a modern browser at desktop and mobile widths.
 - Update README instructions for running the project.
 
-## Phase 6: Validation Pass
+## Phase 5: Validation Pass
 
 Confirm the project matches the constitution.
 

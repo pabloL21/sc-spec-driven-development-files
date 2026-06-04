@@ -1,15 +1,12 @@
 import { serve } from '@hono/node-server'
-import { serveStatic } from '@hono/node-server/serve-static'
-import { Hono } from 'hono'
-import { Main } from './components/Main'
-import { Layout } from './layout'
+import { createApp } from './app'
+import { createClinicRepository } from './data/clinicRepository'
+import { createDatabase, runMigrations } from './db/database'
 
-const app = new Hono()
+const database = createDatabase()
+runMigrations(database)
+const app = createApp(createClinicRepository(database))
 const port = Number(process.env.PORT) || 3000
-
-app.get('/styles.css', serveStatic({ path: './public/styles.css' }))
-
-app.get('/', (c) => c.html(Layout(Main())))
 
 serve({
   fetch: app.fetch,
