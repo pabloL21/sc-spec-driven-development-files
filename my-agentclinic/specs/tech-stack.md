@@ -12,9 +12,9 @@ The stack should be simple, TypeScript-first, and friendly for course exercises.
 | Runtime | Node.js | Familiar runtime for server-side TypeScript demos. |
 | Web Framework | Hono | Lightweight, fast, and easy to understand for building small HTTP apps. |
 | Rendering | Server-rendered HTML | Keeps the first demo simple without needing a frontend build pipeline. |
-| Styling | Plain CSS | Easy to inspect and modify during a course. |
-| Data Storage | In-memory data first | Supports very small learning steps before persistence is introduced. |
-| Future Persistence | SQLite | Simple local database when the demo needs durable agents, ailments, therapies, and appointments. |
+| Styling | PicoCSS plus local CSS | Provides a polished baseline while keeping custom styling small and inspectable. |
+| Data Storage | SQLite after Phase 1 | Simple local database for durable agents, ailments, therapies, and appointments. |
+| Migrations | Plain SQL files | Keeps schema changes inspectable, teachable, and close to SQLite itself. |
 | Build Tooling | TypeScript compiler | The current project already builds with `tsc`. Add more tooling only when needed. |
 | Test Runner | Vitest | Gives the project fast TypeScript-friendly tests for validating specs without adding heavy tooling. |
 
@@ -38,9 +38,10 @@ Do not create folders before they have a clear purpose. The project should evolv
 - Keep pages usable in a modern browser.
 - Prefer readable server-side TypeScript over clever abstractions.
 - Keep feature code close to the route or view until repetition proves a helper is useful.
-- Use static demo data before adding database complexity.
+- Use hard-coded data only for the earliest learning steps.
+- Use plain SQL files for migrations when SQLite is introduced in Phase 2.
 - Use Vitest for focused validation tests as behavior becomes large enough to need repeatable checks.
-- Add SQLite only after the core domain is visible in the UI.
+- Keep SQLite usage small and readable for course demos.
 
 ## Deferred Choices
 
@@ -49,6 +50,5 @@ These can wait until later phases:
 - Client-side framework.
 - Authentication.
 - API clients.
-- Database migrations.
 - Automated UI testing.
 - Deployment platform.
