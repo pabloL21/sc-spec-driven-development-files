@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-04
+
+- Added the Phase 2 Clinic Dashboard Foundation and Persistence specification.
+- Implemented SQLite-backed agents, ailments, therapies, and appointment placeholder pages.
+- Added plain SQL migrations, demo seed data, and a database setup script.
+- Added PicoCSS-based dashboard styling with navigation, page titles, and responsive review fixes.
+- Added Vitest coverage for the SQLite-backed dashboard pages.
+
 ## 2026-05-29
 
 - Added Vitest test setup for the Hello Clinic page.
